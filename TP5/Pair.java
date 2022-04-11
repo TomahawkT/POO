@@ -2,7 +2,7 @@ package TP5;
 
 import java.util.Objects;
 
-public class Pair<A,B> {
+public class Pair<A extends Comparable<? super A>,B extends Comparable<? super B>> implements Comparable<Pair<A,B>>{
     private A a;
     private B b;
 
@@ -47,5 +47,14 @@ public class Pair<A,B> {
 
     public void setB(B b) {
         this.b = b;
+    }
+
+    @Override
+    public int compareTo(Pair<A, B> o) {
+        int aDiff = a.compareTo(o.a);
+        if (aDiff !=0){
+            return aDiff;
+        }
+        return b.compareTo(o.b);
     }
 }
