@@ -1,8 +1,10 @@
 package TP4;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class Interval {
+public class Interval implements Iterable<Double>{
 
     private double start, end, increment;
 
@@ -105,5 +107,29 @@ public class Interval {
         return Objects.hash(start, end, increment);
     }
 
+    @Override
+    public Iterator<Double> iterator() {
+        return new IntervalIterator();
+    }
+
+    private class IntervalIterator implements Iterator<Double>{
+
+        private double current = start;
+
+        @Override
+        public boolean hasNext() {
+            return current <= end;
+        }
+
+        @Override
+        public Double next() {
+            if (!hasNext()){
+                throw new NoSuchElementException();
+            }
+            double toReturn = current;
+            current += increment;
+            return toReturn;
+        }
+    }
 }
 
