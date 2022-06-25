@@ -21,6 +21,8 @@ public class Polynomial {
         for(int i=0; i < coef.length; i++){
             ans += coef[i] * Math.pow(x,i);
         }
+        return ans;
     }
+
 
 }

@@ -54,6 +54,7 @@ public class LinearListImpl implements LinearList {
             current = current.getTail();
             idx++;
         }
+        return idx;
     }
 
     @Override
